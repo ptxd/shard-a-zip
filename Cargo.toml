@@ -1,0 +1,25 @@
+[package]
+name = "shard-a-zip"
+version = "1.0.0"
+edition = "2021"
+authors = ["Shard-A-Zip Team"]
+description = "Shard-A-Zip: A cross-platform ZIP file splitter with native file dialog"
+license = "MIT"
+
+[dependencies]
+# Native file dialog - works on Windows, Linux, macOS
+rfd = "0.15"
+# ZIP file handling with streaming support
+zip = "2.2"
+# Progress bars and spinners
+indicatif = "0.17"
+# Styled console output
+console = "0.15"
+# Error handling
+anyhow = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
