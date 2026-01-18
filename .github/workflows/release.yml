@@ -16,20 +16,20 @@ jobs:
         include:
           - os: windows-latest
             target: x86_64-pc-windows-msvc
-            artifact_name: shard-a-zip.exe
-            asset_name: shard-a-zip-windows-x64.exe
+            artifact_name: zipsplitter.exe
+            asset_name: zipsplitter-windows-x64.exe
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
-            artifact_name: shard-a-zip
-            asset_name: shard-a-zip-linux-x64
+            artifact_name: zipsplitter
+            asset_name: zipsplitter-linux-x64
           - os: macos-latest
             target: x86_64-apple-darwin
-            artifact_name: shard-a-zip
-            asset_name: shard-a-zip-macos-x64
+            artifact_name: zipsplitter
+            asset_name: zipsplitter-macos-x64
           - os: macos-latest
             target: aarch64-apple-darwin
-            artifact_name: shard-a-zip
-            asset_name: shard-a-zip-macos-arm64
+            artifact_name: zipsplitter
+            asset_name: zipsplitter-macos-arm64
 
     runs-on: ${{ matrix.os }}
 
@@ -51,27 +51,38 @@ jobs:
       - name: Build release
         run: cargo build --release --target ${{ matrix.target }}
 
+      - name: Rename artifact
+        shell: bash
+        run: |
+          cp target/${{ matrix.target }}/release/${{ matrix.artifact_name }} ${{ matrix.asset_name }}
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.asset_name }}
-          path: target/${{ matrix.target }}/release/${{ matrix.artifact_name }}
+          path: ${{ matrix.asset_name }}
 
   release:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
     
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Prepare release files
+        run: |
+          mkdir -p release
+          find artifacts -type f -exec cp {} release/ \;
+          ls -la release/
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            shard-a-zip-windows-x64.exe/shard-a-zip.exe
-            shard-a-zip-linux-x64/shard-a-zip
-            shard-a-zip-macos-x64/shard-a-zip
-            shard-a-zip-macos-arm64/shard-a-zip
+          files: release/*
           generate_release_notes: true

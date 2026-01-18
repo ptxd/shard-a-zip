@@ -4,11 +4,9 @@
 
 **A cross-platform, memory-efficient ZIP file splitter**
 
-[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/YOUR_USERNAME/shard-a-zip/releases)
-[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/YOUR_USERNAME/shard-a-zip/releases)
-[![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/YOUR_USERNAME/shard-a-zip/releases)
-
-[**Download Latest Release**](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest)
+[![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-windows-x64.exe)
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-linux-x64)
+[![macOS](https://img.shields.io/badge/macOS-000000?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-macos-x64)
 
 </div>
 
@@ -24,28 +22,27 @@
 
 ---
 
-## 📥 Quick Start
+## 📥 Download
 
-### Download
+Click your platform to download directly:
 
-Go to [**Releases**](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest) and download for your platform:
+| Platform | Download |
+|----------|----------|
+| **Windows** | [zipsplitter-windows-x64.exe](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-windows-x64.exe) |
+| **Linux** | [zipsplitter-linux-x64](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-linux-x64) |
+| **macOS (Intel)** | [zipsplitter-macos-x64](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-macos-x64) |
+| **macOS (Apple Silicon)** | [zipsplitter-macos-arm64](https://github.com/YOUR_USERNAME/shard-a-zip/releases/latest/download/zipsplitter-macos-arm64) |
 
-| Platform | File |
-|----------|------|
-| Windows | `shard-a-zip-windows-x64.exe` |
-| Linux | `shard-a-zip-linux-x64` |
-| macOS (Intel) | `shard-a-zip-macos-x64` |
-| macOS (Apple Silicon) | `shard-a-zip-macos-arm64` |
+---
 
-### Run
+## 🚀 Quick Start
 
-1. **Windows**: Double-click `shard-a-zip.exe`
+1. **Windows**: Double-click `zipsplitter-windows-x64.exe`
 2. **Linux/macOS**: 
    ```bash
-   chmod +x shard-a-zip
-   ./shard-a-zip
+   chmod +x zipsplitter-*
+   ./zipsplitter-*
    ```
-
 3. Select your ZIP file using the file dialog
 4. Output files appear in the same folder as your source ZIP
 
@@ -101,7 +98,7 @@ cd shard-a-zip
 cargo build --release
 ```
 
-Executable will be at `target/release/shard-a-zip` (or `.exe` on Windows).
+Executable will be at `target/release/zipsplitter` (or `.exe` on Windows).
 
 ---
 
